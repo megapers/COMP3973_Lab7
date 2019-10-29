@@ -4,11 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 using Lab7.Data;
 using Lab7.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors;
 
 namespace Lab7.Controllers
 {
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("PartyPolicy")] 
     public class PartiesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

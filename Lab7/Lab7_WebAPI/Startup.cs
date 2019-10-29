@@ -33,7 +33,12 @@ namespace Lab7
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+             // Add Cors
+            services.AddCors(o => o.AddPolicy("PartyPolicy", builder => {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
             services.AddDbContext<ApplicationDbContext>(
                 option => option.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
@@ -94,7 +99,7 @@ namespace Lab7
             //app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors();
             app.UseAuthentication();
             app.UseAuthorization();
 
