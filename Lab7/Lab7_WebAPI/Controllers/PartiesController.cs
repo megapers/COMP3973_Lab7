@@ -5,12 +5,13 @@ using Lab7.Data;
 using Lab7.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Lab7.Controllers
 {
-    //[Authorize]
-    [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
+    [Route("api/[controller]")]
     [EnableCors("PartyPolicy")] 
     public class PartiesController : ControllerBase
     {

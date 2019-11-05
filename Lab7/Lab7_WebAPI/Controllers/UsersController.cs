@@ -12,12 +12,14 @@ using Microsoft.AspNetCore.Authorization;
 using Lab7.Services;
 using Lab7.Entities;
 using Lab7.Models.Users;
+using Microsoft.AspNetCore.Cors;
 
 namespace Lab7.Controllers
 {
     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
+    [EnableCors("PartyPolicy")] 
     public class UsersController : ControllerBase
     {
         private IUserService _userService;
